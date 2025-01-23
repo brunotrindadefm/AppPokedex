@@ -1,11 +1,36 @@
+import React, { useEffect, useState } from "react";
 import Favorites from "@/src/screens/favorites/Favorites";
 import Home from "@/src/screens/home/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import SplashScreenComponent from "@/src/screens/splash/SplashScreen";
+import * as SplashScreen from "expo-splash-screen";
+import UseFonts from "@/src/hooks/UseFonts";
 
 const Tab = createBottomTabNavigator();
 
 export default function Index() {
+  const [appIsReady, setAppIsReady] = useState<boolean>(false);
+
+  useEffect(() => {
+    const prepare = async () => {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        await UseFonts();
+        await new Promise((resolve) => setTimeout(resolve, 3500));
+      } catch (error) {
+        console.warn(error);
+      } finally {
+        setAppIsReady(true);
+        await SplashScreen.hideAsync();
+      }
+    };
+
+    prepare();
+  }, []);
+
+  if (!appIsReady) return <SplashScreenComponent />;
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
