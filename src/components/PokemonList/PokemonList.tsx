@@ -1,9 +1,9 @@
 import { IPokemon } from "@/src/interfaces/IPokemon";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FlatList, useWindowDimensions, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PokemonCard from "../PokemonCard/PokemonCard";
+import { getPokemons } from "@/src/api/PokemonServices";
 
 const PokemonList = () => {
     const [data, setData] = useState<IPokemon[]>([]);
@@ -11,37 +11,40 @@ const PokemonList = () => {
     const [offset, setOffset] = useState(0);
     const { width } = useWindowDimensions();
 
-    const CARD_WIDTH = 150; 
+    const CARD_WIDTH = 150;
     const SPACING = 20;
 
     const numColumns = Math.max(1, Math.floor(width / (CARD_WIDTH + SPACING)));
+    const isFetching = useRef(false);
 
     const fetchData = async () => {
+
         try {
-            if (loadingMore) return;
+            if (isFetching.current) return;
+
+            isFetching.current = true;
 
             setLoadingMore(true);
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`)
 
-            const pokemons = response.data.results;
+            console.log("Novo offset será:", offset);
+            const newPokemons = await getPokemons(offset, 10);
 
-            const pokemonDetailsPromises = pokemons.map((pokemon: IPokemon) =>
-                axios.get(pokemon.url)
-            );
-            const pokemonDetailsResponses = await Promise.all(pokemonDetailsPromises);
+            setData(prev => {
+                const news = newPokemons.filter(p => !prev.some(old => old.id === p.id));
+                return [...prev, ...news];
+            });
 
-            setData(prevData => {
-                const filteredNewPokemons = pokemonDetailsResponses
-                    .map((res) => res.data)
-                    .filter(newPokemon => !prevData.some(existing => existing.id === newPokemon.id));
-                return [...prevData, ...filteredNewPokemons];
-            })
-
-            setOffset(prev => prev + 20);
+            setOffset(prev => prev + 10);
+            setOffset(prev => {
+                const newOffset = prev + 10;
+                console.log("Novo offset será:", newOffset);
+                return newOffset;
+            });
         } catch (error) {
             console.log(error);
         } finally {
             setLoadingMore(false);
+            isFetching.current = false;
         }
     }
 
@@ -57,7 +60,7 @@ const PokemonList = () => {
                 keyExtractor={(item) => item.id.toString()}
                 numColumns={numColumns}
                 renderItem={({ item }) => (
-                    <PokemonCard pokemon={item}/>
+                    <PokemonCard pokemon={item} />
                 )}
                 contentContainerStyle={{
                     padding: SPACING,
@@ -65,7 +68,7 @@ const PokemonList = () => {
                     justifyContent: 'center',
                 }}
                 onEndReached={fetchData}
-                onEndReachedThreshold={0.5}
+                onEndReachedThreshold={0.1}
                 ListFooterComponent={loadingMore ? <Text>Carregando...</Text> : null}
             />
 
