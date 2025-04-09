@@ -1,9 +1,10 @@
 import { IPokemon } from "@/src/interfaces/IPokemon";
 import { useState, useEffect, useRef } from "react";
-import { FlatList, useWindowDimensions, Text } from "react-native";
+import { FlatList, useWindowDimensions, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import { getPokemons } from "@/src/api/PokemonServices";
+import styles from "./PokemonList.styles";
 
 const PokemonList = () => {
     const [data, setData] = useState<IPokemon[]>([]);
@@ -27,7 +28,7 @@ const PokemonList = () => {
             setLoadingMore(true);
 
             console.log("Novo offset será:", offset);
-            const newPokemons = await getPokemons(offset, 10);
+            const newPokemons = await getPokemons(offset, 20);
 
             setData(prev => {
                 const news = newPokemons.filter(p => !prev.some(old => old.id === p.id));
@@ -62,13 +63,17 @@ const PokemonList = () => {
                 renderItem={({ item }) => (
                     <PokemonCard pokemon={item} />
                 )}
+                columnWrapperStyle={{ gap: 20 }}
                 contentContainerStyle={{
                     padding: SPACING,
                     alignItems: 'center',
                     justifyContent: 'center',
+                    gap: 20,
+                    paddingBlock: 20,
+                    backgroundColor: '#ffffff'
                 }}
                 onEndReached={fetchData}
-                onEndReachedThreshold={0.1}
+                onEndReachedThreshold={0.5}
                 ListFooterComponent={loadingMore ? <Text>Carregando...</Text> : null}
             />
 
