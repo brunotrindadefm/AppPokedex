@@ -57,8 +57,8 @@ export default function Index() {
             },
           })}
         >
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Favorites" component={Favorites} />
+          <Tab.Screen name="home" component={Home} />
+          <Tab.Screen name="favorites" component={Favorites} />
         </Tab.Navigator>
       </View>
     </TouchableWithoutFeedback>

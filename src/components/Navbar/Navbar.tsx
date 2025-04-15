@@ -4,14 +4,20 @@ import styles from "./Navbar.styles";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons'
 import { useState } from "react";
+import { useRouter } from "expo-router";
 
 const Navbar = () => {
 
   const [searchText, setSearchText] = useState<string>('');
+  const router = useRouter();
 
   const handleSearch = (): void => {
     const formattedText = searchText.trim().toLowerCase();
-    alert(formattedText);
+    if (formattedText.length === 0) return;
+    router.push({
+      pathname: "./search",
+      params: { q: formattedText },
+    });
   }
 
   return (
