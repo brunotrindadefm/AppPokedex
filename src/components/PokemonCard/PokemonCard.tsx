@@ -1,11 +1,11 @@
 import { IPokemonCardProps } from "@/src/interfaces/IPokemonCardProps";
-import { View, Text, Image } from "react-native";
+import { Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./PokemonCard.styles";
 
 const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
     return (
-        <View style={styles.pokemonCard}>
+        <TouchableOpacity activeOpacity={0.7} style={styles.pokemonCard}>
             <Image
                 source={{ uri: pokemon.sprites.other['official-artwork'].front_default || 'https://placehold.co/600x400' }}
                 style={styles.cardImage}
@@ -20,7 +20,7 @@ const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
             <Text>
                 grama
             </Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
