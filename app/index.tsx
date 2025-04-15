@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Favorites from "@/src/screens/favorites/Favorites";
-import Home from "@/src/screens/home/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import SplashScreenComponent from "@/src/screens/splash/SplashScreen";
@@ -8,6 +6,8 @@ import * as SplashScreen from "expo-splash-screen";
 import UseFonts from "@/src/hooks/UseFonts";
 import Navbar from "@/src/components/Navbar/Navbar";
 import { TouchableWithoutFeedback, Keyboard, View } from 'react-native';
+import Home from "./tabs/home";
+import Favorites from "./tabs/favorites";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +35,7 @@ export default function Index() {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <Navbar />
         <Tab.Navigator
           screenOptions={({ route }) => ({

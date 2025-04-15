@@ -15,7 +15,7 @@ const Navbar = () => {
     const formattedText = searchText.trim().toLowerCase();
     if (formattedText.length === 0) return;
     router.push({
-      pathname: "./search",
+      pathname: "/search",  
       params: { q: formattedText },
     });
   }
