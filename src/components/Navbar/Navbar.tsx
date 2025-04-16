@@ -14,8 +14,10 @@ const Navbar = () => {
   const handleSearch = (): void => {
     const formattedText = searchText.trim().toLowerCase();
     if (formattedText.length === 0) return;
+
+    console.log("Redirecionao")
     router.push({
-      pathname: "/search",  
+      pathname: "/tabs/search",
       params: { q: formattedText },
     });
   }

@@ -1,9 +1,16 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { View, Text, TouchableOpacity } from "react-native";
+import { useEffect } from "react";
+import { View, Text } from "react-native";
 
 const Search = () => {
 
     const { q } = useLocalSearchParams();
+
+    useEffect(() => {
+        if (typeof q === "string") {
+          console.log("Buscando por:", q);
+        }
+      }, [q]);
 
     return (
         <View style={{ flex: 1 }}>
