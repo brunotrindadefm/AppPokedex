@@ -15,11 +15,11 @@ const Navbar = () => {
     const formattedText = searchText.trim().toLowerCase();
     if (formattedText.length === 0) return;
 
-    console.log("Redirecionao")
     router.push({
-      pathname: "/tabs/search",
-      params: { q: formattedText },
+      pathname: "/app-screens/search",
+      params: { q: formattedText }
     });
+    setSearchText('');
   }
 
   return (
