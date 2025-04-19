@@ -4,7 +4,6 @@ import { FlatList, useWindowDimensions, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import { getPokemons } from "@/src/api/PokemonServices";
-import styles from "./PokemonList.styles";
 
 const PokemonList = () => {
     const [data, setData] = useState<IPokemon[]>([]);
@@ -64,7 +63,6 @@ const PokemonList = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: 20,
-                    paddingBlock: 20,
                     backgroundColor: '#ffffff'
                 }}
                 onEndReached={() => {

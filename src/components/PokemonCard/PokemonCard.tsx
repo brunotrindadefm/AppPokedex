@@ -1,9 +1,14 @@
 import { IPokemonCardProps } from "@/src/interfaces/IPokemonCardProps";
-import { Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import { Text, Image, TouchableOpacity, View } from "react-native";
+import React, { useEffect } from "react";
 import styles from "./PokemonCard.styles";
+import typeColors from "@/src/constants/typeColors";
 
 const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
+
+    useEffect(() => {
+        console.log(pokemon);
+    }, [pokemon]);
     return (
         <TouchableOpacity activeOpacity={0.7} style={styles.pokemonCard}>
             <Image
@@ -17,10 +22,22 @@ const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
             <Text style={styles.pokemonName}>
                 {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
             </Text>
-            <Text>
-                grama
-            </Text>
-        </TouchableOpacity>
+            <View style={styles.pokemonTypes}>
+                {pokemon.types.map((type) => (
+                    <View
+                        key={type.type.name}
+                        style={[
+                            styles.typeCard,
+                            { backgroundColor: typeColors[type.type.name] || '#999' }
+                        ]}
+                    >
+                        <Text style={styles.typeCardText}>
+                            {type.type.name}
+                        </Text>
+                    </View>
+                ))}
+            </View>
+        </TouchableOpacity >
     )
 }
 
