@@ -8,39 +8,34 @@ import styles from "./PokemonList.styles";
 
 const PokemonList = () => {
     const [data, setData] = useState<IPokemon[]>([]);
-    const [loadingMore, setLoadingMore] = useState<boolean>(false);
     const [offset, setOffset] = useState(0);
+    const [loadingMore, setLoadingMore] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
     const { width } = useWindowDimensions();
 
     const CARD_WIDTH = 150;
     const SPACING = 20;
-
     const numColumns = Math.max(1, Math.floor(width / (CARD_WIDTH + SPACING)));
     const isFetching = useRef(false);
 
     const fetchData = async () => {
-
         try {
             if (isFetching.current) return;
-
             isFetching.current = true;
-
             setLoadingMore(true);
 
-            console.log("Novo offset será:", offset);
             const newPokemons = await getPokemons(offset, 20);
+            if (newPokemons.length === 0) {
+                setHasMore(false);
+                return;
+            }
 
             setData(prev => {
                 const news = newPokemons.filter(p => !prev.some(old => old.id === p.id));
                 return [...prev, ...news];
             });
 
-            setOffset(prev => prev + 10);
-            setOffset(prev => {
-                const newOffset = prev + 10;
-                console.log("Novo offset será:", newOffset);
-                return newOffset;
-            });
+            setOffset(prev => prev + 20);
         } catch (error) {
             console.log(error);
         } finally {
@@ -51,7 +46,7 @@ const PokemonList = () => {
 
     useEffect(() => {
         fetchData();
-    }, [])
+    }, []);
 
 
     return (
@@ -72,8 +67,13 @@ const PokemonList = () => {
                     paddingBlock: 20,
                     backgroundColor: '#ffffff'
                 }}
-                onEndReached={fetchData}
-                onEndReachedThreshold={0.5}
+                onEndReached={() => {
+                    if (!loadingMore && hasMore) {
+                        fetchData();
+                    }
+                }
+                }
+                onEndReachedThreshold={0.1}
                 ListFooterComponent={loadingMore ? <Text>Carregando...</Text> : null}
             />
 
