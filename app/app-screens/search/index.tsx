@@ -9,7 +9,6 @@ const Search = () => {
 
   useEffect(() => {
     if (typeof q === "string") {
-      console.log("Buscando por:", q);
     }
   }, [q]);
 

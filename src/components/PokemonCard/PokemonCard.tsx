@@ -1,14 +1,11 @@
 import { IPokemonCardProps } from "@/src/interfaces/IPokemonCardProps";
 import { Text, Image, TouchableOpacity, View } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./PokemonCard.styles";
 import typeColors from "@/src/constants/typeColors";
 
 const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
 
-    useEffect(() => {
-        console.log(pokemon);
-    }, [pokemon]);
     return (
         <TouchableOpacity activeOpacity={0.7} style={styles.pokemonCard}>
             <Image
