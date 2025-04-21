@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5,
-        padding: 5,
+        padding: 3,
         width: '48%'
     },
     typeCardText: {

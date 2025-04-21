@@ -4,6 +4,7 @@ import { FlatList, useWindowDimensions, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import { getPokemons } from "@/src/api/PokemonServices";
+import SimpleLoader from "../Loader/Loader";
 
 const PokemonList = () => {
     const [data, setData] = useState<IPokemon[]>([]);
@@ -72,7 +73,7 @@ const PokemonList = () => {
                 }
                 }
                 onEndReachedThreshold={0.1}
-                ListFooterComponent={loadingMore ? <Text>Carregando...</Text> : null}
+                ListFooterComponent={loadingMore ? SimpleLoader : null}
             />
 
         </SafeAreaView>
