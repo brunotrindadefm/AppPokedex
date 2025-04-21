@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Pressable } from "react-native";
 import styles from "./Navbar.styles";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons'
@@ -25,7 +25,11 @@ const Navbar = () => {
   return (
     <SafeAreaView>
       <View style={styles.navbarContainer}>
-        <Text style={styles.navbarTitle}>BTPokedex</Text>
+        <Pressable
+          onPress={() => router.push({ pathname: '/app-screens/tabs/home', })}
+        >
+          <Text style={styles.navbarTitle}>BTPokedex</Text>
+        </Pressable>
         <View style={styles.navbarSearch}>
           <TextInput
             placeholder="Search"
@@ -35,7 +39,9 @@ const Navbar = () => {
             placeholderTextColor="#999"
             onSubmitEditing={handleSearch}
           />
-          <TouchableOpacity onPress={handleSearch} style={styles.searchButton} activeOpacity={0.7}>
+          <TouchableOpacity
+            onPress={handleSearch} style={styles.searchButton} activeOpacity={0.7}
+          >
             <Ionicons name="search" size={20} color="white" />
           </TouchableOpacity>
         </View>

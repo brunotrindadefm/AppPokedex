@@ -1,14 +1,13 @@
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { TouchableWithoutFeedback, Keyboard, View } from "react-native";
-import { Slot, Tabs } from "expo-router";
+import { View } from "react-native";
+import { Tabs } from "expo-router";
 
 
 export default function TabsLayout() {
 
 
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={{ flex: 1 }}>
                 <Tabs
                     screenOptions={({ route }) => ({
@@ -46,7 +45,6 @@ export default function TabsLayout() {
                     />
                 </Tabs>
             </View>
-        </TouchableWithoutFeedback>
 
     );
 }

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { View, Text } from "react-native";
 import TabsLayout from "../tabs/_layout";
 
-const Search = () => {
+const SearchScreen = () => {
 
   const { q } = useLocalSearchParams();
 
@@ -22,4 +22,4 @@ const Search = () => {
   )
 }
 
-export default Search;
+export default SearchScreen;

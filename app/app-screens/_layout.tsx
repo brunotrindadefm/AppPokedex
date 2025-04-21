@@ -1,6 +1,6 @@
 import { Slot, SplashScreen } from "expo-router";
 import Navbar from "@/src/components/Navbar/Navbar";
-import { View } from "react-native";
+import { View, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useEffect, useState } from "react";
 import SplashScreenComponent from "@/src/screens/splash/SplashScreen";
 import UseFonts from "@/src/hooks/UseFonts";
@@ -27,9 +27,11 @@ export default function RootLayout() {
 
     if (!appIsReady) return <SplashScreenComponent />;
     return (
-        <View style={{ flex: 1 }}>
-            <Navbar />
-            <Slot />
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={{ flex: 1 }}>
+                <Navbar />
+                <Slot />
+            </View>
+        </TouchableWithoutFeedback>
     );
 }

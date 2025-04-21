@@ -1,18 +1,30 @@
 import { IPokemonCardProps } from "@/src/interfaces/IPokemonCardProps";
-import { Text, Image, TouchableOpacity, View } from "react-native";
+import { Text, Image, TouchableOpacity, View, Pressable } from "react-native";
 import React from "react";
 import styles from "./PokemonCard.styles";
 import typeColors from "@/src/constants/typeColors";
+import { useRouter } from "expo-router";
 
 const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
 
+    const router = useRouter();
     return (
         <TouchableOpacity activeOpacity={0.7} style={styles.pokemonCard}>
-            <Image
-                source={{ uri: pokemon.sprites.other['official-artwork'].front_default || 'https://placehold.co/600x400' }}
-                style={styles.cardImage}
-                resizeMode="contain"
-            />
+            <Pressable
+            onPress={() => {
+                router.push({
+                    pathname: '/app-screens/pokemon-details/[id]',
+                    params: {
+                        id: pokemon.id.toString(),
+                    }
+                })
+            }}>
+                <Image
+                    source={{ uri: pokemon.sprites.other['official-artwork'].front_default || 'https://placehold.co/600x400' }}
+                    style={styles.cardImage}
+                    resizeMode="contain"
+                />
+            </Pressable>
             <Text style={styles.pokemonId}>
                 N°{String(pokemon.id).padStart(4, '0')}
             </Text>
