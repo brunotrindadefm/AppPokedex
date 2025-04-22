@@ -1,6 +1,6 @@
 import * as Font from "expo-font";
 
-const UseFonts = async () => {
+const useFonts = async () => {
   await Font.loadAsync({
     'RobotoBold': require("../../assets/fonts/Roboto-Bold.ttf"),
     'RobotoRegular': require("../../assets/fonts/Roboto-Regular.ttf"),
@@ -13,4 +13,4 @@ const UseFonts = async () => {
   });
 };
 
-export default UseFonts;
+export default useFonts;

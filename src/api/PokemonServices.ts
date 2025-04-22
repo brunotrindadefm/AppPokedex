@@ -22,3 +22,13 @@ export const getPokemons = async (offset: number = 0, limit: number = 20): Promi
 
     return details;
 };
+
+export const getPokemonById = async (pokemonId: string): Promise<IPokemon | null> => {
+    try {
+        const response = await axiosInstance.get(`pokemon/${pokemonId}`);
+        return response.data;
+    } catch (err) {
+        console.error(`Erro ao buscar detalhes do Pokémon com id ${pokemonId}:`, err);
+        return null;
+    }
+};  

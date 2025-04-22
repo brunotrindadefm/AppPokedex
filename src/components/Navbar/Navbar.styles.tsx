@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
         fontFamily: 'OrbitronSemibold',
         color: '#ffffff',
         fontWeight: 'bold',
-        marginBottom: 3
+        marginBottom: 3,
+        marginRight: 20
     }
 })
 
