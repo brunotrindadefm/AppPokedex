@@ -32,3 +32,13 @@ export const getPokemonById = async (pokemonId: string): Promise<IPokemon | null
         return null;
     }
 };  
+
+export const getPokemonBySearch = async (search: string): Promise<IPokemon | null> => {
+    try {
+        const response = await axiosInstance.get(`pokemon/${search}`);
+        return response.data;
+    } catch (err) {
+        console.error(`Erro ao buscar ${search}:`, err);
+        return null;
+    }
+}

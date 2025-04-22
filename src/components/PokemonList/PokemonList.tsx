@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import SimpleLoader from "../Loader/Loader";
 import { usePokemonList } from "@/src/hooks/usePokemonList";
+import styles from "./PokemonList.styles";
 
 const PokemonList = () => {
     const { width } = useWindowDimensions();
@@ -26,13 +27,10 @@ const PokemonList = () => {
                             <PokemonCard pokemon={item} />
                         )}
                         columnWrapperStyle={{ gap: 20 }}
-                        contentContainerStyle={{
-                            padding: SPACING,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: 20,
-                            backgroundColor: '#ffffff'
-                        }}
+                        contentContainerStyle={[
+                            styles.contentContainerStyle,
+                            { padding: SPACING, }
+                        ]}
                         onEndReached={() => {
                             if (!loadingMore && hasMore) {
                                 fetchMore();

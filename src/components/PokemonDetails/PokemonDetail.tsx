@@ -10,7 +10,12 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
     return (
         <View style={{ flex: 1 }}>
-            {loading ? <SimpleLoader /> : <Text>Pokemon: {pokemon?.name}</Text>}
+            {loading ?
+                <SimpleLoader />
+                : (
+                    <Text>Pokemon: {pokemon?.name}</Text>
+                )
+            }
         </View>
     )
 }

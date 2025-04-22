@@ -32,7 +32,7 @@ const Navbar = () => {
         </Pressable>
         <View style={styles.navbarSearch}>
           <TextInput
-            placeholder="Search"
+            placeholder="Search by name or id"
             value={searchText}
             onChangeText={setSearchText}
             style={styles.navbarInput}

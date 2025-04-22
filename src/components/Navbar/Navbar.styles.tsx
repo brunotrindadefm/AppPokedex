@@ -11,8 +11,7 @@ const styles = StyleSheet.create({
     },
     navbarSearch: {
         flexDirection: 'row',
-        alignItems: 'center',
-        maxWidth: '95%',
+        alignItems: 'center'
     },
     navbarInput: {
         flex: 1,
@@ -34,8 +33,7 @@ const styles = StyleSheet.create({
         fontFamily: 'OrbitronSemibold',
         color: '#ffffff',
         fontWeight: 'bold',
-        marginBottom: 3,
-        marginRight: 20
+        marginBottom: 3
     }
 })
 
