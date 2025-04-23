@@ -6,11 +6,17 @@ import SimpleLoader from "../Loader/Loader";
 import styles from "./PokemonDetails.styles";
 import PokemonTypes from "../PokemonTypes/PokemonTypes";
 import { usePokemonDescription } from "@/src/hooks/usePokemonDescription";
+import { usePokemonTypeDetails } from "@/src/hooks/usePokemonTypeDetails";
 
 const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
     const { pokemon } = usePokemonDetails(pokemonId as string);
     const { pokemonDescription } = usePokemonDescription(pokemonId as string);
+
+    const types = pokemon?.types.map((t) => t.type.name) || [];
+    const { pokemonTypeDetails } = usePokemonTypeDetails(types);
+
+    console.log(pokemonTypeDetails);
 
     return (
         <View style={styles.pokemonDetailsContainer}>
