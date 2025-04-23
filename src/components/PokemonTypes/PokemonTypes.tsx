@@ -8,15 +8,15 @@ const PokemonTypes = ({ types, paddingTypeCard, textFontSize }: IPokemonTypesPro
         <View style={styles.pokemonTypes}>
             {types.map((type) => (
                 <View
-                    key={type.type.name}
+                    key={type}
                     style={[
                         styles.typeCard,
-                        { backgroundColor: typeColors[type.type.name] || '#999' },
+                        { backgroundColor: typeColors[type] || '#999' },
                         { padding: paddingTypeCard }
                     ]}
                 >
                     <Text style={[styles.typeCardText, {fontSize: textFontSize}]}>
-                        {type.type.name}
+                        {type}
                     </Text>
                 </View>
             ))}

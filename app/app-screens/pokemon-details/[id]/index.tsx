@@ -1,6 +1,7 @@
 import PokemonDetails from "@/src/components/PokemonDetails/PokemonDetail";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
+import { View } from "react-native";
 
 const PokemonDetailsScreen = () => {
 

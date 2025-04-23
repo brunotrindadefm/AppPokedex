@@ -1,9 +1,5 @@
 export interface IPokemonTypesProps {
-    types: {
-        type: {
-            name: string;
-        };
-    }[];
+    types: string[];
     paddingTypeCard: number,
     textFontSize: number
 }

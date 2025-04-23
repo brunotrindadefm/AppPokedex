@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get('window').width;
+console.log(screenWidth)
 
 const styles = StyleSheet.create({
     pokemonDetailsContainer: {
-        flex: 1,
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
         flexDirection: 'column',
-        paddingTop: 20,
-        backgroundColor: '#ffffff'
+        padding: 20,
+        backgroundColor: '#ffffff',
     },
     pokemonNameAndId: {
         display: 'flex',
@@ -29,8 +29,44 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 500,
     },
+    pokemonStats: {
+        width: screenWidth * 0.8,
+        backgroundColor: '#a4a4a4',
+        borderRadius: 10,
+        marginBottom: 8,
+        overflow: 'hidden',
+        padding: 10
+    },
+    statsBarContainer: {
+        width: '100%',
+        height: 10,
+        backgroundColor: '#ffffff',
+        borderRadius: 3,
+        marginTop: 4,
+    },
+    statsBar: {
+        height: '100%',
+        borderRadius: 3,
+        backgroundColor: '#87CEFA'
+    },
+    description: {
+        width: '100%',
+        textAlign: 'center',
+        marginBottom: 20
+    },
     typesContainer: {
-        width: '50%'
+        width: screenWidth * 0.5,
+        gap: 8,
+        marginBottom: 20
+    },
+    pokemonTypesDetails: {
+        width: screenWidth * 0.5,
+        gap: 20
+    },
+    pokemonDetailsTitle: {
+        fontFamily: 'RobotoBold',
+        fontSize: 20,
+        marginBottom: 10
     }
 });
 

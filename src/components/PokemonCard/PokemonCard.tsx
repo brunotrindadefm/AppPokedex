@@ -32,7 +32,7 @@ const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
                 {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
             </Text>
             <PokemonTypes
-                types={pokemon.types}
+                types={pokemon.types.map(t => t.type.name)}
                 textFontSize={10}
                 paddingTypeCard={3}
             />
