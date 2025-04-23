@@ -1,9 +1,9 @@
 import { IPokemonCardProps } from "@/src/interfaces/IPokemonCardProps";
-import { Text, Image, TouchableOpacity, View, Pressable } from "react-native";
+import { Text, Image, TouchableOpacity, Pressable } from "react-native";
 import React from "react";
 import styles from "./PokemonCard.styles";
-import typeColors from "@/src/constants/typeColors";
 import { useRouter } from "expo-router";
+import PokemonTypes from "../PokemonTypes/PokemonTypes";
 
 const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
 
@@ -11,14 +11,14 @@ const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
     return (
         <TouchableOpacity activeOpacity={0.7} style={styles.pokemonCard}>
             <Pressable
-            onPress={() => {
-                router.push({
-                    pathname: '/app-screens/pokemon-details/[id]',
-                    params: {
-                        id: pokemon.id.toString(),
-                    }
-                })
-            }}>
+                onPress={() => {
+                    router.push({
+                        pathname: '/app-screens/pokemon-details/[id]',
+                        params: {
+                            id: pokemon.id.toString(),
+                        }
+                    })
+                }}>
                 <Image
                     source={{ uri: pokemon.sprites.other['official-artwork'].front_default || 'https://placehold.co/600x400' }}
                     style={styles.cardImage}
@@ -31,21 +31,11 @@ const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
             <Text style={styles.pokemonName}>
                 {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
             </Text>
-            <View style={styles.pokemonTypes}>
-                {pokemon.types.map((type) => (
-                    <View
-                        key={type.type.name}
-                        style={[
-                            styles.typeCard,
-                            { backgroundColor: typeColors[type.type.name] || '#999' }
-                        ]}
-                    >
-                        <Text style={styles.typeCardText}>
-                            {type.type.name}
-                        </Text>
-                    </View>
-                ))}
-            </View>
+            <PokemonTypes
+                types={pokemon.types}
+                textFontSize={10}
+                paddingTypeCard={3}
+            />
         </TouchableOpacity >
     )
 }

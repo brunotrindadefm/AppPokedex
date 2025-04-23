@@ -1,19 +1,42 @@
 import { usePokemonDetails } from "@/src/hooks/usePokemonDetails";
 import { IPokemonDetailsProps } from "@/src/interfaces/IPokemonDetailsProps";
 import React from "react";
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import SimpleLoader from "../Loader/Loader";
+import styles from "./PokemonDetails.styles";
+import PokemonTypes from "../PokemonTypes/PokemonTypes";
 
 const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
-    const { pokemon, loading } = usePokemonDetails(pokemonId as string);
+    const { pokemon } = usePokemonDetails(pokemonId as string);
 
     return (
-        <View style={{ flex: 1 }}>
-            {loading ?
+        <View style={styles.pokemonDetailsContainer}>
+            {pokemon == null ?
                 <SimpleLoader />
                 : (
-                    <Text>Pokemon: {pokemon?.name}</Text>
+                    <>
+                        <View style={styles.pokemonNameAndId}>
+                            <Text style={styles.pokemonName}>
+                                {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                            </Text>
+                            <Text style={styles.pokemonId}>
+                                N°{String(pokemon.id).padStart(4, '0')}
+                            </Text>
+                        </View>
+                        <Image
+                            source={{ uri: pokemon.sprites.other['official-artwork'].front_default || 'https://placehold.co/600x400' }}
+                            style={styles.pokemonImage}
+                            resizeMode="contain"
+                        />
+                        <View style={styles.typesContainer}>
+                            <PokemonTypes
+                                types={pokemon.types}
+                                textFontSize={16}
+                                paddingTypeCard={7}
+                            />
+                        </View>
+                    </>
                 )
             }
         </View>
