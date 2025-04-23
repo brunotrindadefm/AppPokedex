@@ -5,10 +5,12 @@ import { Image, Text, View } from "react-native";
 import SimpleLoader from "../Loader/Loader";
 import styles from "./PokemonDetails.styles";
 import PokemonTypes from "../PokemonTypes/PokemonTypes";
+import { usePokemonDescription } from "@/src/hooks/usePokemonDescription";
 
 const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
     const { pokemon } = usePokemonDetails(pokemonId as string);
+    const { pokemonDescription } = usePokemonDescription(pokemonId as string);
 
     return (
         <View style={styles.pokemonDetailsContainer}>
@@ -29,7 +31,22 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                             style={styles.pokemonImage}
                             resizeMode="contain"
                         />
+                        <Text>
+                            Stats:
+                            {pokemon.stats.map((stat) => (
+                                <>
+                                    <View>{stat.base_stat}</View>
+                                    <View>{stat.effort}</View>
+                                    <View>{stat.stat.name}</View>
+                                </>
+                            ))}
+                        </Text>
+                        <Text>
+                            Description:
+                            {pokemonDescription}
+                        </Text>
                         <View style={styles.typesContainer}>
+                            Tipos:
                             <PokemonTypes
                                 types={pokemon.types}
                                 textFontSize={16}

@@ -1,3 +1,5 @@
+import { IPokemonStat } from "./IPokemonStat";
+
 export interface IPokemon {
   id: number;
   name: string;
@@ -14,4 +16,7 @@ export interface IPokemon {
       name: string;
     };
   }[];
+  stats: IPokemonStat[];
+  weight: number;
+  height: number
 }
