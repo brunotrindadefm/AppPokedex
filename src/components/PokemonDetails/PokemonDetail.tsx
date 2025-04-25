@@ -1,6 +1,6 @@
 import { usePokemonDetails } from "@/src/hooks/usePokemonDetails";
 import { IPokemonDetailsProps } from "@/src/interfaces/IPokemonDetailsProps";
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import SimpleLoader from "../Loader/Loader";
 import styles from "./PokemonDetails.styles";
@@ -22,18 +22,20 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
     const allStrengthness = pokemonTypeDetails?.flatMap(type => type.damage_relations.double_damage_to.map(t => t.name));
     const uniqueStrengthness = [...new Set(allStrengthness)];
 
+    useEffect(() => {
+
+    }, [pokemon, pokemonDescription, pokemonTypeDetails]);
+
     return (
-        <ScrollView
-            style={styles.pokemonDetailsContainer}
-            contentContainerStyle={{
-                flexGrow: 1,
-                alignItems: 'center',
-                paddingBottom: 20,
-            }}>
+        <>
             {pokemon == null ?
                 <SimpleLoader />
                 : (
-                    <>
+                    <ScrollView
+                        contentContainerStyle={styles.pokemonDetailsContainer} 
+                        showsVerticalScrollIndicator={false}
+                        keyboardShouldPersistTaps="handled"
+                    >
                         <View style={styles.pokemonNameAndId}>
                             <Text style={styles.pokemonName}>
                                 {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
@@ -58,7 +60,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                                             style={[
                                                 styles.statsBar,
                                                 {
-                                                    width: `${Math.min(stat.base_stat, 200)}%`,
+                                                    width: `${stat.base_stat / 2}%`,
                                                 }
                                             ]}>
                                         </View>
@@ -67,7 +69,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                             ))}
                         </View>
                         <View style={styles.description}>
-                            <Text style={{textAlign: 'center'}}>{pokemonDescription?.replace(/\b\w/g, (char) => char.toUpperCase())}</Text>
+                            <Text style={{ textAlign: 'center' }}>{pokemonDescription?.replace(/\b\w/g, (char) => char.toUpperCase())}</Text>
                         </View>
                         <View style={styles.typesContainer}>
                             <Text style={styles.pokemonDetailsTitle}>Type</Text>
@@ -103,10 +105,10 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                                 }
                             </View>
                         </View>
-                    </>
+                    </ScrollView >
                 )
             }
-        </ScrollView >
+        </>
     )
 }
 

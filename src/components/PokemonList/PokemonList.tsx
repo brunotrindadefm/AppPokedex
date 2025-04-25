@@ -29,7 +29,7 @@ const PokemonList = () => {
                         columnWrapperStyle={{ gap: 20 }}
                         contentContainerStyle={[
                             styles.contentContainerStyle,
-                            { padding: SPACING, }
+                            { padding: 10 }
                         ]}
                         onEndReached={() => {
                             if (!loadingMore && hasMore) {

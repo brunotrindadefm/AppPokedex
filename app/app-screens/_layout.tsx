@@ -4,7 +4,6 @@ import { View, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useEffect, useState } from "react";
 import SplashScreenComponent from "@/src/screens/splash/SplashScreen";
 import useFonts from "@/src/hooks/useFonts";
-import TabsLayout from "./tabs/_layout";
 
 export default function RootLayout() {
     const [appIsReady, setAppIsReady] = useState(false);
@@ -28,11 +27,15 @@ export default function RootLayout() {
 
     if (!appIsReady) return <SplashScreenComponent />;
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={{ flex: 1 }}>
-                <Navbar />
-                <Slot />
-            </View>
-        </TouchableWithoutFeedback>
+        <View
+            style={{ flex: 1 }}
+            onStartShouldSetResponder={() => {
+                Keyboard.dismiss();
+                return false;
+            }}
+        >
+            <Navbar />
+            <Slot />
+        </View>
     );
 }

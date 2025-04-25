@@ -34,7 +34,7 @@ const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
             <PokemonTypes
                 types={pokemon.types.map(t => t.type.name)}
                 textFontSize={10}
-                paddingTypeCard={3}
+                paddingTypeCard={5}
             />
         </TouchableOpacity >
     )

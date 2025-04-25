@@ -2,13 +2,15 @@ import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 
 const screenWidth = Dimensions.get('window').width;
-console.log(screenWidth)
+const screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     pokemonDetailsContainer: {
-        flexDirection: 'column',
-        padding: 20,
-        backgroundColor: '#ffffff',
+        flexGrow: 1, 
+        paddingTop: 20,
+        paddingBottom: 40,
+        alignItems: 'center',
+        backgroundColor: '#fffff',
     },
     pokemonNameAndId: {
         display: 'flex',
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
     },
     pokemonImage: {
         width: '100%',
-        height: 500,
+        height: screenHeight * 0.6,
     },
     pokemonStats: {
         width: screenWidth * 0.8,
