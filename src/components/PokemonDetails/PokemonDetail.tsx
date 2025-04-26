@@ -1,6 +1,6 @@
 import { usePokemonDetails } from "@/src/hooks/usePokemonDetails";
 import { IPokemonDetailsProps } from "@/src/interfaces/IPokemonDetailsProps";
-import React, { useEffect } from "react";
+import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import SimpleLoader from "../Loader/Loader";
 import styles from "./PokemonDetails.styles";
@@ -23,10 +23,6 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
     const allStrengthness = pokemonTypeDetails?.flatMap(type => type.damage_relations.double_damage_to.map(t => t.name));
     const uniqueStrengthness = [...new Set(allStrengthness)];
-
-    useEffect(() => {
-        console.log(pokemonEvolutionChain);
-    }, [pokemon, pokemonDescription, pokemonTypeDetails]);
 
     return (
         <>
