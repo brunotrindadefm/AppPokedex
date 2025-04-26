@@ -7,11 +7,13 @@ import styles from "./PokemonDetails.styles";
 import PokemonTypes from "../PokemonTypes/PokemonTypes";
 import { usePokemonDescription } from "@/src/hooks/usePokemonDescription";
 import { usePokemonTypeDetails } from "@/src/hooks/usePokemonTypeDetails";
+import { usePokemonEvolutionChain } from "@/src/hooks/usePokemonEvolutionChain";
 
 const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
     const { pokemon } = usePokemonDetails(pokemonId as string);
     const { pokemonDescription } = usePokemonDescription(pokemonId as string);
+    const { pokemonEvolutionChain } = usePokemonEvolutionChain(pokemonId as string);
 
     const types = pokemon?.types.map((t) => t.type.name) || [];
     const { pokemonTypeDetails } = usePokemonTypeDetails(types);
@@ -23,7 +25,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
     const uniqueStrengthness = [...new Set(allStrengthness)];
 
     useEffect(() => {
-
+        console.log(pokemonEvolutionChain);
     }, [pokemon, pokemonDescription, pokemonTypeDetails]);
 
     return (

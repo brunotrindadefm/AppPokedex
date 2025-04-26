@@ -1,3 +1,4 @@
+import { IPokemonEvolutionChain } from "../interfaces/IPokemonEvolutionChain";
 import { IPokemonTypeDetails } from "../interfaces/IPokemonTypeDetails";
 import axiosInstance from "./axiosInstance";
 import { IPokemon } from "@/src/interfaces/IPokemon";
@@ -61,6 +62,24 @@ export const getPokemonTypeDetails = async (pokemonType: string): Promise<IPokem
         return response.data;
     } catch (err) {
         console.log('Error searching pokemon type details: ', err);
+        return null;
+    }
+}
+
+export const getPokemonEvolutionChain = async (pokemonId: string): Promise<IPokemonEvolutionChain | null> => {
+    try {
+        const response = await axiosInstance.get(`pokemon-species/${pokemonId}`);
+
+        const evolutionChainUrl = response.data.evolution_chain?.url;
+
+        if (!evolutionChainUrl)
+            return null;
+
+        const evolutionResponse = await axiosInstance.get(evolutionChainUrl);
+
+        return evolutionResponse.data;
+    } catch (err) {
+        console.log('Error searching pokemon evolution chain: ', err);
         return null;
     }
 }
