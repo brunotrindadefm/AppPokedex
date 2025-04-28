@@ -19,10 +19,26 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
     const { pokemonTypeDetails } = usePokemonTypeDetails(types);
 
     const allWeaknesses = pokemonTypeDetails?.flatMap(type => type.damage_relations.double_damage_from.map(t => t.name));
-    const uniqueWeaknesses = [...new Set(allWeaknesses)];
+
+    const halfAndNoDamageFrom = pokemonTypeDetails?.flatMap(type => [
+        ... type.damage_relations.half_damage_from.map(t => t.name),
+        ... type.damage_relations.no_damage_from.map(t => t.name)
+    ]);
+
+    const filteredWeaknesses = allWeaknesses?.filter(type => !halfAndNoDamageFrom?.includes(type));
+
+    const uniqueWeaknesses = [...new Set(filteredWeaknesses)];
 
     const allStrengthness = pokemonTypeDetails?.flatMap(type => type.damage_relations.double_damage_to.map(t => t.name));
-    const uniqueStrengthness = [...new Set(allStrengthness)];
+    
+    const halfAndNoDamageTo = pokemonTypeDetails?.flatMap(type => [
+        ... type.damage_relations.half_damage_to.map(t => t.name),
+        ... type.damage_relations.no_damage_to.map(t => t.name)
+    ]);
+
+    const filteredStrengthness = allStrengthness?.filter(type => !halfAndNoDamageTo?.includes(type));
+
+    const uniqueStrengthness = [...new Set(filteredStrengthness)];
 
     return (
         <>
@@ -30,7 +46,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                 <SimpleLoader />
                 : (
                     <ScrollView
-                        contentContainerStyle={styles.pokemonDetailsContainer} 
+                        contentContainerStyle={styles.pokemonDetailsContainer}
                         showsVerticalScrollIndicator={false}
                         keyboardShouldPersistTaps="handled"
                     >
