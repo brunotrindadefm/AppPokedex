@@ -8,6 +8,7 @@ const PokemonTypes = ({ types, paddingTypeCard, textFontSize, width, justifyCont
         <View style={[styles.pokemonTypes, {justifyContent: justifyContent ?? undefined}]}>
             {types.map((type) => (
                 <View
+                    key={type}
                     style={[
                         styles.typeCard,
                         { backgroundColor: typeColors[type] || '#999' },

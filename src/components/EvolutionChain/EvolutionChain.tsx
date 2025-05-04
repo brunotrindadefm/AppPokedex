@@ -14,7 +14,7 @@ const EvolutionChain = ({ evolutionChain }: IEvolutionChainProps) => {
     return (
         <>
             {pokemon != null && (
-                <View style={styles.container}>
+                <View key={evolutionChain?.species.name} style={styles.container}>
                     <Pressable
                         style={styles.imagePressable}
                         onPress={() => {

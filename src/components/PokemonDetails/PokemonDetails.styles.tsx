@@ -32,7 +32,9 @@ const styles = StyleSheet.create({
     },
     pokemonStats: {
         width: '85%',
-        backgroundColor: '#a4a4a4',
+        backgroundColor: '#ffffff',
+        borderColor: 'black',
+        borderWidth: 2,
         borderRadius: 10,
         marginBottom: 8,
         overflow: 'hidden',
@@ -51,9 +53,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#87CEFA'
     },
     description: {
-        width: '100%',
+        width: '85%',
         textAlign: 'center',
-        marginBottom: 20
+        marginBottom: 10,
+        marginTop: 10,
+        borderRadius: 8,
+        borderColor: 'black',
+        backgroundColor: '#ffffff',
+        borderWidth: 2,
+        padding: 10
     },
     typesContainer: {
         width: '85%',
@@ -75,8 +83,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         backgroundColor: '#ffffff',
+        borderColor: 'black',
+        borderWidth: 2,
         borderRadius: 8,
-        padding: 10
+        padding: 15
     }
 });
 
