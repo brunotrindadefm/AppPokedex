@@ -1,9 +1,9 @@
 import { Slot, SplashScreen } from "expo-router";
 import Navbar from "@/src/components/Navbar/Navbar";
-import { View, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { View, Keyboard } from "react-native";
 import { useEffect, useState } from "react";
 import SplashScreenComponent from "@/src/screens/splash/SplashScreen";
-import useFonts from "@/src/hooks/useFonts";
+import useFonts from "@/src/hooks/UseFonts";
 
 export default function RootLayout() {
     const [appIsReady, setAppIsReady] = useState(false);
