@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         paddingBottom: 40,
         alignItems: 'center',
-        backgroundColor: '#fffff',
+        backgroundColor: '#f2f2f2',
     },
     pokemonNameAndId: {
         display: 'flex',
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     pokemonStats: {
         width: '85%',
         backgroundColor: '#ffffff',
-        borderColor: 'black',
+        borderColor: '#cccccc',
         borderWidth: 2,
         borderRadius: 10,
         marginBottom: 8,
@@ -43,14 +43,14 @@ const styles = StyleSheet.create({
     statsBarContainer: {
         width: '100%',
         height: 10,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#D3D3D3',
         borderRadius: 3,
         marginTop: 4,
     },
     statsBar: {
         height: '100%',
         borderRadius: 3,
-        backgroundColor: '#87CEFA'
+        backgroundColor: '#42a5f5'
     },
     description: {
         width: '85%',
@@ -58,10 +58,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 10,
         borderRadius: 8,
-        borderColor: 'black',
+        borderColor: '#cccccc',
         backgroundColor: '#ffffff',
         borderWidth: 2,
-        padding: 10
+        padding: 10,
+        color: '#212121'
     },
     typesContainer: {
         width: '85%',
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         backgroundColor: '#ffffff',
-        borderColor: 'black',
+        borderColor: '#cccccc',
         borderWidth: 2,
         borderRadius: 8,
         padding: 15
