@@ -8,6 +8,7 @@ import PokemonTypes from "../PokemonTypes/PokemonTypes";
 import { usePokemonDescription } from "@/src/hooks/usePokemonDescription";
 import { usePokemonTypeDetails } from "@/src/hooks/usePokemonTypeDetails";
 import { usePokemonEvolutionChain } from "@/src/hooks/usePokemonEvolutionChain";
+import EvolutionChain from "../EvolutionChain/EvolutionChain";
 
 const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
@@ -21,8 +22,8 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
     const allWeaknesses = pokemonTypeDetails?.flatMap(type => type.damage_relations.double_damage_from.map(t => t.name));
 
     const halfAndNoDamageFrom = pokemonTypeDetails?.flatMap(type => [
-        ... type.damage_relations.half_damage_from.map(t => t.name),
-        ... type.damage_relations.no_damage_from.map(t => t.name)
+        ...type.damage_relations.half_damage_from.map(t => t.name),
+        ...type.damage_relations.no_damage_from.map(t => t.name)
     ]);
 
     const filteredWeaknesses = allWeaknesses?.filter(type => !halfAndNoDamageFrom?.includes(type));
@@ -30,10 +31,10 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
     const uniqueWeaknesses = [...new Set(filteredWeaknesses)];
 
     const allStrengthness = pokemonTypeDetails?.flatMap(type => type.damage_relations.double_damage_to.map(t => t.name));
-    
+
     const halfAndNoDamageTo = pokemonTypeDetails?.flatMap(type => [
-        ... type.damage_relations.half_damage_to.map(t => t.name),
-        ... type.damage_relations.no_damage_to.map(t => t.name)
+        ...type.damage_relations.half_damage_to.map(t => t.name),
+        ...type.damage_relations.no_damage_to.map(t => t.name)
     ]);
 
     const filteredStrengthness = allStrengthness?.filter(type => !halfAndNoDamageTo?.includes(type));
@@ -117,6 +118,9 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                                         />
                                         : <Text>Pokemon dont have Strengthness</Text>
                                 }
+                            </View>
+                            <View>
+                                <EvolutionChain evolutionChain={pokemonEvolutionChain?.chain} pokemonTypes={pokemon.types.map(t => t.type.name)} />
                             </View>
                         </View>
                     </ScrollView >
