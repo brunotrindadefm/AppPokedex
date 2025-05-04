@@ -119,8 +119,9 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                                         : <Text>Pokemon dont have Strengthness</Text>
                                 }
                             </View>
-                            <View>
-                                <EvolutionChain evolutionChain={pokemonEvolutionChain?.chain} pokemonTypes={pokemon.types.map(t => t.type.name)} />
+                            <View style={styles.evolutionChainContainter}>
+                                <Text style={[styles.pokemonDetailsTitle, {alignSelf: 'flex-start'}]}>Evolutions</Text>
+                                <EvolutionChain evolutionChain={pokemonEvolutionChain?.chain} />
                             </View>
                         </View>
                     </ScrollView >

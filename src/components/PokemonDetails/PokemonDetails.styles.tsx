@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 
-const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
         height: screenHeight * 0.6,
     },
     pokemonStats: {
-        width: screenWidth * 0.8,
+        width: '85%',
         backgroundColor: '#a4a4a4',
         borderRadius: 10,
         marginBottom: 8,
@@ -57,18 +56,27 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     typesContainer: {
-        width: screenWidth * 0.5,
+        width: '85%',
         gap: 8,
         marginBottom: 20
     },
     pokemonTypesDetails: {
-        width: screenWidth * 0.5,
+        width: '85%',
         gap: 20
     },
     pokemonDetailsTitle: {
         fontFamily: 'RobotoBold',
         fontSize: 20,
         marginBottom: 10
+    },
+    evolutionChainContainter: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        backgroundColor: '#ffffff',
+        borderRadius: 8,
+        padding: 10
     }
 });
 

@@ -1,27 +1,57 @@
 import { IEvolutionChainProps } from "@/src/interfaces/IEvolutionChainProps";
-import { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable, Image } from "react-native";
 import PokemonTypes from "../PokemonTypes/PokemonTypes";
+import { usePokemonDetails } from "@/src/hooks/usePokemonDetails";
+import styles from "./EvolutionChain.styles";
+import { useRouter } from "expo-router";
 
-const EvolutionChain = ({ evolutionChain, pokemonTypes }: IEvolutionChainProps) => {
+const EvolutionChain = ({ evolutionChain }: IEvolutionChainProps) => {
     if (!evolutionChain) return null;
 
-    useEffect(() => {
-        console.log(evolutionChain);
-    }, [evolutionChain])
-    return (
-        <View key={evolutionChain?.species.name}>
-            <Text className="id-name">{evolutionChain?.species.name}</Text>
-            <View>{evolutionChain?.evolves_to.map(evolution => (
-                <>
-                    <EvolutionChain key={evolution.species.name} evolutionChain={evolution} pokemonTypes={pokemonTypes}/>
-                    <View className="types">
-                        <PokemonTypes types={pokemonTypes} paddingTypeCard={8} textFontSize={20} />
-                    </View>
-                </>
-            ))}</View>
-        </View>
+    const { pokemon } = usePokemonDetails(evolutionChain.species.name);
+    const router = useRouter();
 
+    return (
+        <>
+            {pokemon != null && (
+                <View style={styles.container}>
+                    <Pressable
+                        style={styles.imagePressable}
+                        onPress={() => {
+                            router.push({
+                                pathname: '/app-screens/pokemon-details/[id]',
+                                params: {
+                                    id: pokemon.id.toString(),
+                                }
+                            })
+                        }}>
+                        <Image
+                            source={{ uri: pokemon.sprites.other['official-artwork'].front_default || 'https://placehold.co/600x400' }}
+                            style={styles.pokemonImage}
+                            resizeMode="contain"
+                        />
+                    </Pressable>
+                    <View style={styles.pokemonNameAndId}>
+                        <Text style={styles.pokemonName}>
+                            {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                        </Text>
+                        <Text style={styles.pokemonId}>
+                            N°{String(pokemon?.id).padStart(4, '0')}
+                        </Text>
+                    </View>
+                    <PokemonTypes
+                        types={pokemon.types.map(t => t.type.name)}
+                        paddingTypeCard={5}
+                        textFontSize={16}
+                        width='50%'
+                        justifyContent='center'
+                    />
+                </View>
+            )}
+            {evolutionChain?.evolves_to.map(evolution => (
+                <EvolutionChain evolutionChain={evolution} />
+            ))}
+        </>
     )
 }
 

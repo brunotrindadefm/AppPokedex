@@ -15,7 +15,6 @@
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 5,
-            width: '48%'
         },
         typeCardText: {
             color: '#fff',
