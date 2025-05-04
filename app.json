@@ -16,11 +16,6 @@
         "foregroundImage": "./assets/images/logoPokedex.png",
         "backgroundColor": "#ffffff"
       },
-      "splash": {
-        "image": "./assets/images/logoPokedex.png",
-        "resizeMode": "contain",
-        "backgroundColor": "#ffffff"
-      }
     },
     "web": {
       "bundler": "metro",
@@ -29,15 +24,6 @@
     },
     "plugins": [
       "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/logoPokedex.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ],
       "expo-font"
     ],
     "experiments": {
