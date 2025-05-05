@@ -1,4 +1,4 @@
-import typeColors from "@/src/constants/typeColors";
+import { typeColors } from "@/src/constants/typeColors";
 import styles from "./PokemonTypes.styles";
 import { View, Text } from "react-native";
 import { IPokemonTypesProps } from "@/src/interfaces/IPokemonTypesProps";

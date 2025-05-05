@@ -1,4 +1,4 @@
-const typeColors: { [key: string]: string } = {
+export const typeColors: { [key: string]: string } = {
   normal: '#A8A878',
   fire: '#F08030',
   water: '#6890F0',
