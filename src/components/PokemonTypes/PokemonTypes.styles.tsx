@@ -17,10 +17,21 @@
             borderRadius: 5,
         },
         typeCardText: {
+            display: 'flex',
             color: '#fff',
             fontWeight: 'bold',
             fontFamily: 'RobotoLight',
             textTransform: 'capitalize',
+        },
+        starContainer: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 20,
+            width: 20,
+            backgroundColor: 'black',
+            borderRadius: '50%',
+            marginLeft: 5
         }
     });
 

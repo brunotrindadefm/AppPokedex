@@ -9,6 +9,7 @@ import { usePokemonDescription } from "@/src/hooks/usePokemonDescription";
 import { usePokemonTypeDetails } from "@/src/hooks/usePokemonTypeDetails";
 import { usePokemonEvolutionChain } from "@/src/hooks/usePokemonEvolutionChain";
 import EvolutionChain from "../EvolutionChain/EvolutionChain";
+import { getTypesMultiplier } from "@/src/utils/getTypesMultiplier";
 
 const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
@@ -26,7 +27,9 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
         ...type.damage_relations.no_damage_from.map(t => t.name)
     ]);
 
-    const filteredWeaknesses = allWeaknesses?.filter(type => !halfAndNoDamageFrom?.includes(type));
+    const filteredWeaknesses = allWeaknesses?.filter(type => !halfAndNoDamageFrom?.includes(type)) ?? [];
+
+    const fourTimesWeaknesses = getTypesMultiplier(filteredWeaknesses);
 
     const uniqueWeaknesses = [...new Set(filteredWeaknesses)];
 
@@ -103,6 +106,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                                             types={uniqueWeaknesses}
                                             textFontSize={16}
                                             paddingTypeCard={7}
+                                            multipliers={fourTimesWeaknesses}
                                         />
                                         : <Text>Pokemon dont have Weaknesses</Text>
                                 }
@@ -120,7 +124,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                                 }
                             </View>
                             <View style={styles.evolutionChainContainter}>
-                                <Text style={[styles.pokemonDetailsTitle, {alignSelf: 'flex-start'}]}>Evolutions</Text>
+                                <Text style={[styles.pokemonDetailsTitle, { alignSelf: 'flex-start' }]}>Evolutions</Text>
                                 <EvolutionChain evolutionChain={pokemonEvolutionChain?.chain} />
                             </View>
                         </View>

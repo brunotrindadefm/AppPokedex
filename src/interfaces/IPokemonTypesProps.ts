@@ -6,4 +6,5 @@ export interface IPokemonTypesProps {
     textFontSize: number,
     width?: DimensionValue,
     justifyContent?: ViewStyle['justifyContent'];
+    multipliers?: string[];
 }
