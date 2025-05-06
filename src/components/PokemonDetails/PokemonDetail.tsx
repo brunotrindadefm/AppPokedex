@@ -10,6 +10,7 @@ import { usePokemonTypeDetails } from "@/src/hooks/usePokemonTypeDetails";
 import { usePokemonEvolutionChain } from "@/src/hooks/usePokemonEvolutionChain";
 import EvolutionChain from "../EvolutionChain/EvolutionChain";
 import { getTypesMultiplier } from "@/src/utils/getTypesMultiplier";
+import { formatPokemonName } from "@/src/utils/formatPokemonName";
 
 const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
@@ -56,7 +57,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                     >
                         <View style={styles.pokemonNameAndId}>
                             <Text style={styles.pokemonName}>
-                                {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                                {formatPokemonName(pokemon.name)}
                             </Text>
                             <Text style={styles.pokemonId}>
                                 N°{String(pokemon.id).padStart(4, '0')}

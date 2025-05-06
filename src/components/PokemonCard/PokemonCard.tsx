@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./PokemonCard.styles";
 import { useRouter } from "expo-router";
 import PokemonTypes from "../PokemonTypes/PokemonTypes";
+import { formatPokemonName } from "@/src/utils/formatPokemonName";
 
 const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
 
@@ -29,7 +30,7 @@ const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
                 N°{String(pokemon.id).padStart(4, '0')}
             </Text>
             <Text style={styles.pokemonName}>
-                {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                {formatPokemonName(pokemon.name)}
             </Text>
             <PokemonTypes
                 types={pokemon.types.map(t => t.type.name)}
