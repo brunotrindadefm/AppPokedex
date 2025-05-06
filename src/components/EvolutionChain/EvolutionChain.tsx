@@ -4,6 +4,7 @@ import PokemonTypes from "../PokemonTypes/PokemonTypes";
 import { usePokemonDetails } from "@/src/hooks/usePokemonDetails";
 import styles from "./EvolutionChain.styles";
 import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 const EvolutionChain = ({ evolutionChain }: IEvolutionChainProps) => {
     if (!evolutionChain) return null;
@@ -46,6 +47,14 @@ const EvolutionChain = ({ evolutionChain }: IEvolutionChainProps) => {
                         width='50%'
                         justifyContent='center'
                     />
+
+                    {evolutionChain.evolves_to?.length > 0 && (
+                        <Ionicons
+                            name="chevron-down"
+                            size={60}
+                            color="#000"
+                        />
+                    )}
                 </View>
             )}
             {evolutionChain?.evolves_to.map(evolution => (
