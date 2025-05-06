@@ -7,22 +7,23 @@ export const getPokemons = async (offset: number = 0, limit: number = 20): Promi
     const response = await axiosInstance.get(`pokemon?limit=${limit}&offset=${offset}`);
     const pokemons = response.data.results;
 
-    const details: IPokemon[] = [];
-
-    for (const pokemon of pokemons) {
+    const promises = pokemons.map(async (pokemon: IPokemon) => {
         try {
             const res = await axiosInstance.get(pokemon.url);
             const img = res.data?.sprites?.other?.['official-artwork']?.front_default;
 
-            if (img) details.push(res.data);
+            if (img) return res.data;
 
             await new Promise(res => setTimeout(res, 100));
         } catch (err) {
             console.log(`Error searching: ${pokemon.name}`, err);
+            return null
         }
-    }
+    })
 
-    return details;
+    const results = await Promise.all(promises);
+
+    return results.filter(Boolean) as IPokemon[];
 };
 
 export const getPokemonById = async (pokemonId: string): Promise<IPokemon | null> => {
