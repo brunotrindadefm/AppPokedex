@@ -125,8 +125,16 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                                 }
                             </View>
                             <View style={styles.evolutionChainContainter}>
-                                <Text style={[styles.pokemonDetailsTitle, { alignSelf: 'flex-start' }]}>Evolutions</Text>
-                                <EvolutionChain key={pokemonEvolutionChain?.chain.species.name} evolutionChain={pokemonEvolutionChain?.chain} />
+                                {
+                                    pokemonEvolutionChain != null && pokemonEvolutionChain.chain.evolves_to.length > 0 ? (
+                                        <>
+                                            <Text style={[styles.pokemonDetailsTitle, { alignSelf: 'flex-start' }]}>Evolutions</Text>
+                                            <EvolutionChain key={pokemonEvolutionChain?.chain.species.name} evolutionChain={pokemonEvolutionChain?.chain} />
+                                        </>
+                                    ) : (
+                                        <Text style={[styles.pokemonDetailsTitle, { alignSelf: 'center' }]}>{formatPokemonName(pokemon.name)} does not evolve.</Text>
+                                    )
+                                }
                             </View>
                         </View>
                     </ScrollView >

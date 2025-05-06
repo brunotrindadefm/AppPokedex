@@ -10,7 +10,7 @@ const PokemonSearch = ({ query }: IPokemonSearchProps) => {
 
     return (
         <View style={{ flex: 1, display: "flex", alignItems: "center" }}>
-            {pokemons ? (
+            {pokemons.length > 0 ? (
                 <PokemonList pokemons={pokemons} hasMore={hasMore} loadingMore={loadingMore} fetchMore={fetchMore} />
             ) : (
                 <Text style={{ textAlign: 'center', marginTop: 20 }}>
