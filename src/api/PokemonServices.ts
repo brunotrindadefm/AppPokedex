@@ -2,6 +2,7 @@ import { IPokemonEvolutionChain } from "../interfaces/IPokemonEvolutionChain";
 import { IPokemonTypeDetails } from "../interfaces/IPokemonTypeDetails";
 import axiosInstance from "./axiosInstance";
 import { IPokemon } from "@/src/interfaces/IPokemon";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const getPokemons = async (offset: number = 0, limit: number = 20): Promise<IPokemon[]> => {
     const response = await axiosInstance.get(`pokemon?limit=${limit}&offset=${offset}`);
@@ -36,12 +37,12 @@ export const getPokemonById = async (pokemonId: string): Promise<IPokemon | null
     }
 };
 
-export const getPokemonBySearch = async (search: string , offset: number = 0, limit: number = 20): Promise<IPokemon[] | null> => {
+export const getPokemonBySearch = async (search: string, offset: number = 0, limit: number = 20): Promise<IPokemon[] | null> => {
     try {
         const allPokemons = await getAllPokemons();
         const normalizedQuery = search.toLowerCase();
 
-        const filtered = allPokemons?.filter(p => 
+        const filtered = allPokemons?.filter(p =>
             p.name.includes(normalizedQuery) ||
             p.url.split("/").filter(Boolean).pop()?.includes(normalizedQuery)
         )
@@ -59,7 +60,7 @@ export const getPokemonBySearch = async (search: string , offset: number = 0, li
             }
         });
 
-        if(!promises) return null;
+        if (!promises) return null;
 
         const response = await Promise.all(promises);
         return response.filter(Boolean) as IPokemon[];
@@ -110,8 +111,9 @@ export const getPokemonEvolutionChain = async (pokemonId: string): Promise<IPoke
 
 const getAllPokemons = async (): Promise<IPokemon[] | null> => {
     try {
-        const cached = localStorage.getItem('allPokemons');
-        if (cached) return JSON.parse(cached);    
+        const cached = await AsyncStorage.getItem('allPokemons');
+        if (cached) return JSON.parse(cached);
+
         let allPokemons: IPokemon[] = [];
         let url = `pokemon?limit=200&offset=0`;
 
@@ -120,8 +122,8 @@ const getAllPokemons = async (): Promise<IPokemon[] | null> => {
             allPokemons = [...allPokemons, ...response.data.results];
             url = response.data.next?.replace('https://pokeapi.co/api/v2/', '') || '';
         }
-        
-        localStorage.setItem('allPokemons', JSON.stringify(allPokemons));
+
+        await AsyncStorage.setItem('allPokemons', JSON.stringify(allPokemons))
         return allPokemons;
     } catch (err) {
         console.log('Error fetching all pokemons:', err);
