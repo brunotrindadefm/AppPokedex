@@ -1,17 +1,17 @@
 import React from "react";
 import { Text, View } from "react-native";
-import PokemonCard from "../PokemonCard/PokemonCard";
 import { IPokemonSearchProps } from "@/src/interfaces/IPokemonSearchProps";
 import { usePokemonSearch } from "@/src/hooks/usePokemonSearch";
+import PokemonList from "../PokemonList/PokemonList";
 
 const PokemonSearch = ({ query }: IPokemonSearchProps) => {
 
-    const { pokemon, loading } = usePokemonSearch(query);
+    const { pokemons, hasMore, loadingMore, fetchMore } = usePokemonSearch(query);
 
     return (
         <View style={{ flex: 1, display: "flex", alignItems: "center" }}>
-            {pokemon ? (
-                <PokemonCard pokemon={pokemon} />
+            {pokemons ? (
+                <PokemonList pokemons={pokemons} hasMore={hasMore} loadingMore={loadingMore} fetchMore={fetchMore} />
             ) : (
                 <Text style={{ textAlign: 'center', marginTop: 20 }}>
                     Nenhum Pokémon encontrado.

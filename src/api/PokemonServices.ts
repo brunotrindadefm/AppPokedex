@@ -36,10 +36,33 @@ export const getPokemonById = async (pokemonId: string): Promise<IPokemon | null
     }
 };
 
-export const getPokemonBySearch = async (search: string): Promise<IPokemon | null> => {
+export const getPokemonBySearch = async (search: string , offset: number = 0, limit: number = 20): Promise<IPokemon[] | null> => {
     try {
-        const response = await axiosInstance.get(`pokemon/${search}`);
-        return response.data;
+        const allPokemons = await getAllPokemons();
+        const normalizedQuery = search.toLowerCase();
+
+        const filtered = allPokemons?.filter(p => 
+            p.name.includes(normalizedQuery) ||
+            p.url.split("/").filter(Boolean).pop()?.includes(normalizedQuery)
+        )
+
+        if (!filtered || filtered.length === 0) return [];
+
+        const sliced = filtered.slice(offset, offset + limit);
+
+        const promises = sliced.map(async p => {
+            try {
+                const res = await axiosInstance.get(p.url);
+                return res.data;
+            } catch {
+                return null;
+            }
+        });
+
+        if(!promises) return null;
+
+        const response = await Promise.all(promises);
+        return response.filter(Boolean) as IPokemon[];
     } catch (err) {
         console.error(`Error searching: ${search}:`, err);
         return null;
@@ -84,3 +107,24 @@ export const getPokemonEvolutionChain = async (pokemonId: string): Promise<IPoke
         return null;
     }
 }
+
+const getAllPokemons = async (): Promise<IPokemon[] | null> => {
+    try {
+        const cached = localStorage.getItem('allPokemons');
+        if (cached) return JSON.parse(cached);    
+        let allPokemons: IPokemon[] = [];
+        let url = `pokemon?limit=200&offset=0`;
+
+        while (url) {
+            const response = await axiosInstance.get(url);
+            allPokemons = [...allPokemons, ...response.data.results];
+            url = response.data.next?.replace('https://pokeapi.co/api/v2/', '') || '';
+        }
+        
+        localStorage.setItem('allPokemons', JSON.stringify(allPokemons));
+        return allPokemons;
+    } catch (err) {
+        console.log('Error fetching all pokemons:', err);
+        return null;
+    }
+} 

@@ -1,27 +1,17 @@
 {
   "expo": {
-    "name": "quiz",
-    "slug": "quiz",
+    "name": "pokedex",
+    "slug": "pokedex",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logoPokedex.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logoPokedex.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/logoPokedex.png"
-    },
+    "android": {},
+    "web": {},
     "plugins": [
       "expo-router",
       "expo-font"
