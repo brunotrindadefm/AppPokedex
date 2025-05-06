@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         gap: 20,
         backgroundColor: '#ffffff',
         padding: 10,
-        paddingRight: 16
+        paddingRight: 16,
+        borderRadius: 18
     }
 })
 

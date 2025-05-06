@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IPokemonEvolutionChain } from "../interfaces/IPokemonEvolutionChain";
+import { IPokemonEvolutionChain } from "../interfaces/IPokemonDetails/IPokemonEvolutionChain";
 import { getPokemonEvolutionChain } from "../api/PokemonServices";
 
 export const usePokemonEvolutionChain = (pokemonId: string) => {

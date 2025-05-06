@@ -8,9 +8,7 @@ const PokemonDetailsScreen = () => {
     const { id } = useLocalSearchParams();
 
     return (
-        <SafeAreaView style={{ flex: 1 }} edges={['top']}>
-            <PokemonDetails pokemonId={id as string} />
-        </SafeAreaView>
+        <PokemonDetails pokemonId={id as string} />
     )
 }
 

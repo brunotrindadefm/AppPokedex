@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IPokemonTypeDetails } from "../interfaces/IPokemonTypeDetails";
+import { IPokemonTypeDetails } from "../interfaces/IPokemonDetails/IPokemonTypeDetails";
 import { getPokemonTypeDetails } from "../api/PokemonServices";
 
 export const usePokemonTypeDetails = (pokemonTypes: string[]) => {

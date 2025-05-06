@@ -1,4 +1,4 @@
-import { IPokemonStat } from "./IPokemonStat";
+import { IPokemonStat } from "./IPokemonDetails/IPokemonStat";
 
 export interface IPokemon {
   id: number;

@@ -1,4 +1,4 @@
-import { IPokemon } from "./IPokemon";
+import { IPokemon } from "../IPokemon";
 
 export interface IPokemonEvolutionChain {
     chain: IEvolutionChainLink;

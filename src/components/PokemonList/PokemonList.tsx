@@ -11,12 +11,10 @@ const PokemonList = ({ pokemons, fetchMore, loadingMore, hasMore }: IPokemonList
     const SPACING = 20;
     const numColumns = Math.max(1, Math.floor(width / (CARD_WIDTH + SPACING)));
 
-    if (!pokemons || pokemons.length === 0) {
+    if (!pokemons || pokemons.length === 0) 
         return <SimpleLoader />;
-    }
-
+    
     return (
-        <SafeAreaView style={{ flex: 1 }}>
             <FlatList
                 data={pokemons}
                 keyExtractor={(item) => item.id.toString()}
@@ -37,7 +35,6 @@ const PokemonList = ({ pokemons, fetchMore, loadingMore, hasMore }: IPokemonList
                 onEndReachedThreshold={0.1}
                 ListFooterComponent={loadingMore ? SimpleLoader : null}
             />
-        </SafeAreaView>
     )
 }
 

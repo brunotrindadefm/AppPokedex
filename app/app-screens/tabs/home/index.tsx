@@ -8,7 +8,7 @@ const HomeScreen = () => {
   const { pokemons, fetchMore, loadingMore, hasMore } = usePokemonList();
 
   return (
-    <View style={{ flex: 1, display: "flex", alignItems: "center" }}>
+    <View style={{ flex: 1, paddingVertical: 3, paddingHorizontal: 10}}>
       <PokemonList pokemons={pokemons} hasMore={hasMore} fetchMore={fetchMore} loadingMore={loadingMore} />
     </View>
   );

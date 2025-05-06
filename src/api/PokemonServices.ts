@@ -1,5 +1,5 @@
-import { IPokemonEvolutionChain } from "../interfaces/IPokemonEvolutionChain";
-import { IPokemonTypeDetails } from "../interfaces/IPokemonTypeDetails";
+import { IPokemonEvolutionChain } from "../interfaces/IPokemonDetails/IPokemonEvolutionChain";
+import { IPokemonTypeDetails } from "../interfaces/IPokemonDetails/IPokemonTypeDetails";
 import axiosInstance from "./axiosInstance";
 import { IPokemon } from "@/src/interfaces/IPokemon";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -108,6 +108,15 @@ export const getPokemonEvolutionChain = async (pokemonId: string): Promise<IPoke
         return null;
     }
 }
+
+export const saveFavoritePokemon = async () => {
+
+}
+
+export const getFavoritesPokemons = async () => {
+    
+} 
+
 
 const getAllPokemons = async (): Promise<IPokemon[] | null> => {
     try {
