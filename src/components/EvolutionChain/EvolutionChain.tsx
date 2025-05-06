@@ -49,7 +49,7 @@ const EvolutionChain = ({ evolutionChain }: IEvolutionChainProps) => {
                 </View>
             )}
             {evolutionChain?.evolves_to.map(evolution => (
-                <EvolutionChain evolutionChain={evolution} />
+                <EvolutionChain key={evolution.species.name} evolutionChain={evolution} />
             ))}
         </>
     )

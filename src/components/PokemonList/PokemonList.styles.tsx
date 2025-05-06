@@ -5,7 +5,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         gap: 20,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        padding: 10,
+        paddingRight: 16
     }
 })
 

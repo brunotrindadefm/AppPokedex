@@ -5,6 +5,5 @@ export const getTypesMultiplier = (types: string[]): string[] => {
         counts[type] = (counts[type] || 0) + 1;
     }
 
-    console.log(counts)
     return Object.keys(counts).filter(type => counts[type] >= 2);
 }

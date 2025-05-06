@@ -125,7 +125,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                             </View>
                             <View style={styles.evolutionChainContainter}>
                                 <Text style={[styles.pokemonDetailsTitle, { alignSelf: 'flex-start' }]}>Evolutions</Text>
-                                <EvolutionChain evolutionChain={pokemonEvolutionChain?.chain} />
+                                <EvolutionChain key={pokemonEvolutionChain?.chain.species.name} evolutionChain={pokemonEvolutionChain?.chain} />
                             </View>
                         </View>
                     </ScrollView >

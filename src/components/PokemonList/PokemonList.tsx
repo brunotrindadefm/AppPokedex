@@ -27,7 +27,6 @@ const PokemonList = ({ pokemons, fetchMore, loadingMore, hasMore }: IPokemonList
                 columnWrapperStyle={{ gap: 20 }}
                 contentContainerStyle={[
                     styles.contentContainerStyle,
-                    { padding: 10 }
                 ]}
                 onEndReached={() => {
                     if (!loadingMore && hasMore) {
