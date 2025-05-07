@@ -14,6 +14,7 @@ const PokemonDetailsHeader = ({ pokemonName, pokemonId, isFavorite, onToggleFavo
                     size={30}
                     name={isFavorite ? "heart" : "heart-outline"}
                     color={isFavorite ? "red" : "#666"}
+                    style={{ marginTop: 5 }}
                 />
             </Pressable>
             <Text style={styles.pokemonName}>

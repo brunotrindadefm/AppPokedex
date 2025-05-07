@@ -4,16 +4,16 @@ import SimpleLoader from "../Loader/Loader";
 import styles from "./PokemonDetails.styles";
 import EvolutionChain from "../EvolutionChain/EvolutionChain";
 import { formatPokemonName } from "@/src/utils/formatPokemonName";
-import { useState } from "react";
 import PokemonStats from "../PokemonStats/PokemonStats";
 import PokemonDetailsHeader from "../PokemonDetailsHeader/PokemonDetailsHeader";
 import { IPokemonDetailsProps } from "@/src/interfaces/IPokemonDetails/IPokemonDetailsProps";
 import PokemonTypeDetails from "../PokemonTypeDetails/PokemonTypeDetails";
 import { useFullPokemonData } from "@/src/hooks/useFullPokemonData";
+import { useFavoritePokemon } from "@/src/hooks/useFavoritePokemon";
 
 const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
 
-    const [isFavorite, setIsFavorite] = useState<boolean>(false);
+    const { isFavorite, toggleFavorite } = useFavoritePokemon(Number(pokemonId));
     const { uniqueStrengthness, uniqueWeaknesses, fourTimesWeaknesses, pokemon, pokemonDescription, pokemonEvolutionChain } = useFullPokemonData(pokemonId as string);
 
     if (!pokemon || pokemon == null)
@@ -29,7 +29,7 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                 pokemonName={pokemon.name}
                 pokemonId={pokemon.id}
                 isFavorite={isFavorite}
-                onToggleFavorite={() => setIsFavorite(!isFavorite)}
+                onToggleFavorite={toggleFavorite}
             />
             <Image
                 source={{ uri: pokemon.sprites.other['official-artwork'].front_default || 'https://placehold.co/600x400' }}

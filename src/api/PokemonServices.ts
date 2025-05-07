@@ -109,15 +109,6 @@ export const getPokemonEvolutionChain = async (pokemonId: string): Promise<IPoke
     }
 }
 
-export const saveFavoritePokemon = async () => {
-
-}
-
-export const getFavoritesPokemons = async () => {
-    
-} 
-
-
 const getAllPokemons = async (): Promise<IPokemon[] | null> => {
     try {
         const cached = await AsyncStorage.getItem('allPokemons');
