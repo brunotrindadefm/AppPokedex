@@ -18,7 +18,6 @@ export const toggleFavorites = async (id: number): Promise<boolean> => {
         ? favorites.filter(favId => favId !== id)
         : [...favorites, id];
 
-        console.log(newFavorites);
     await saveFavorites(newFavorites);
     return !isFav;
 }

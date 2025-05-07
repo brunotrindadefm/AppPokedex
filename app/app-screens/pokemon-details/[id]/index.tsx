@@ -1,7 +1,6 @@
-import PokemonDetails from "@/src/components/PokemonDetails/PokemonDetail";
+import PokemonDetails from "@/src/components/PokemonDetails/PokemonDetails";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const PokemonDetailsScreen = () => {
 

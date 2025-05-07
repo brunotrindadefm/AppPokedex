@@ -15,7 +15,7 @@ export const getPokemons = async (offset: number = 0, limit: number = 20): Promi
 
             if (img) return res.data;
 
-            await new Promise(res => setTimeout(res, 100));
+            await new Promise(res => setTimeout(res, 150));
         } catch (err) {
             console.log(`Error searching: ${pokemon.name}`, err);
             return null

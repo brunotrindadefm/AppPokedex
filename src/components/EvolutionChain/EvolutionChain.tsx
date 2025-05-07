@@ -1,4 +1,4 @@
-import { IEvolutionChainProps } from "@/src/interfaces/IEvolutionChainProps";
+import { IEvolutionChainProps } from "@/src/interfaces/IPokemonDetails/IEvolutionChainProps";
 import { View, Text, Pressable, Image } from "react-native";
 import PokemonTypes from "../PokemonTypes/PokemonTypes";
 import { usePokemonDetails } from "@/src/hooks/usePokemonDetails";
