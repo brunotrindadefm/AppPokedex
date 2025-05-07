@@ -9,12 +9,12 @@ const PokemonDetailsHeader = ({ pokemonName, pokemonId, isFavorite, onToggleFavo
         <View style={styles.pokemonNameAndId}>
             <Pressable
                 onPress={onToggleFavorite}
+                style={styles.favoriteIcon}
             >
                 <Ionicons
                     size={30}
                     name={isFavorite ? "heart" : "heart-outline"}
                     color={isFavorite ? "red" : "#666"}
-                    style={{ marginTop: 5 }}
                 />
             </Pressable>
             <Text style={styles.pokemonName}>
