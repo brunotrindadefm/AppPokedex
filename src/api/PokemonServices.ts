@@ -129,4 +129,27 @@ const getAllPokemons = async (): Promise<IPokemon[] | null> => {
         console.log('Error fetching all pokemons:', err);
         return null;
     }
-} 
+}
+
+export const getPreviousAndNextPokemon = async (pokemonId: string): Promise<IPokemon[] | null> => {
+    const id = Number(pokemonId);
+
+    if (id < 1 || isNaN(id)) return null;
+
+    const previousId = Math.max(1, id - 1);
+    const nextId = id + 1;
+    
+    try {
+        const response = await Promise.all([
+            getPokemonById(previousId.toString()),
+            getPokemonById(nextId.toString())
+        ].map(p => p.catch(e => null)));
+
+        const validPokemons = response.filter((p): p is IPokemon => p !== null)
+
+        return validPokemons;
+    } catch (err) {
+        console.log('Error fetching previous and next pokemon:', err);
+        return null;
+    }
+}

@@ -1,7 +1,7 @@
 import PokemonList from "@/src/components/PokemonList/PokemonList";
 import { useFavoriteScreen } from "@/src/hooks/useFavoriteScreen";
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 const FavoritesScreen = () => {
 
@@ -9,7 +9,13 @@ const FavoritesScreen = () => {
 
   return (
     <View style={{ flex: 1, display: "flex", alignItems: "center", paddingVertical: 5 }}>
-      <PokemonList pokemons={pokemons} hasMore={hasMore} fetchMore={fetchMore} loadingMore={loadingMore} />
+      {pokemons.length > 0 ? (
+        <PokemonList pokemons={pokemons} hasMore={hasMore} loadingMore={loadingMore} fetchMore={fetchMore} />
+      ) : (
+        <Text style={{ textAlign: 'center', marginTop: 40 }}>
+          Nenhum pokémon nos favoritos.
+        </Text>
+      )}
     </View>
   );
 };

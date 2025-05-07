@@ -37,9 +37,6 @@ const PokemonDetails = ({ pokemonId }: IPokemonDetailsProps) => {
                 resizeMode="contain"
             />
             <PokemonStats pokemonStats={pokemon.stats} />
-            <View style={styles.description}>
-                <Text style={{ textAlign: 'center' }}>{pokemonDescription?.replace(/\b\w/g, (char) => char.toUpperCase())}</Text>
-            </View>
             <PokemonTypeDetails
                 uniqueStrengthness={uniqueStrengthness}
                 uniqueWeaknesses={uniqueWeaknesses}

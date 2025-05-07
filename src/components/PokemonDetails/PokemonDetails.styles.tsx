@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     },
     description: {
         width: '85%',
-        textAlign: 'center',
         marginBottom: 10,
         marginTop: 10,
         borderRadius: 8,
