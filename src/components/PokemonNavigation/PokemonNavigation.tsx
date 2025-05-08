@@ -10,7 +10,14 @@ const PokemonNavigation = ({ pokemon, onPress, width, showPokemonName, direction
     if (pokemon === null) return;
 
     return (
-        <Pressable style={styles.navButton} onPress={onPress}>
+        <Pressable
+            style={({ pressed }) => [
+                styles.navButton,
+                pressed && { backgroundColor: "#dce3f4" },
+                direction === 'previous' ? {borderBottomEndRadius: 40} : {borderBottomStartRadius: 40}
+            ]}
+            onPress={onPress}
+        >
             {direction === 'previous' && (
                 <Ionicons
                     name="arrow-back"

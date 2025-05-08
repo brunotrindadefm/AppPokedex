@@ -8,11 +8,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: "row",
         paddingHorizontal: 20,
-        borderRadius: 8,
-        backgroundColor: "#eee",
+        borderRadius: scaleFont(12),
+        backgroundColor: "#f0f4ff",
         flex: 1,
         marginHorizontal: 3,
-        paddingVertical: 10
+        paddingVertical: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2
     },
     navText: {
         fontFamily: 'RobotoRegular',
