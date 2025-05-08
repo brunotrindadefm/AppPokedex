@@ -14,8 +14,6 @@ export const getPokemons = async (offset: number = 0, limit: number = 20): Promi
             const img = res.data?.sprites?.other?.['official-artwork']?.front_default;
 
             if (img) return res.data;
-
-            await new Promise(res => setTimeout(res, 150));
         } catch (err) {
             console.log(`Error searching: ${pokemon.name}`, err);
             return null
@@ -138,12 +136,12 @@ export const getPreviousAndNextPokemon = async (pokemonId: string): Promise<IPok
 
     const previousId = Math.max(1, id - 1);
     const nextId = id + 1;
-    
+
     try {
         const response = await Promise.all([
             getPokemonById(previousId.toString()),
             getPokemonById(nextId.toString())
-        ].map(p => p.catch(e => null)));
+        ]);
 
         const validPokemons = response.filter((p): p is IPokemon => p !== null)
 

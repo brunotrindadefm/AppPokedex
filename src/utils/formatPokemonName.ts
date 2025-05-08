@@ -1,6 +1,6 @@
 export const formatPokemonName = (pokemonName: string) => {
 
-    if (!pokemonName) return 'Unknown';
+    if (!pokemonName) return '';
 
     let formattedName = pokemonName.replace(/-/g, ' ');
 

@@ -31,7 +31,12 @@ const PokemonDetailsHeader = ({ pokemonName, pokemonId, isFavorite, onToggleFavo
                         color="#000"
                     />
                     <View style={{ flexDirection: 'row', gap: 10 }}>
-                        <Text style={[styles.navTextId, { fontSize: scaleFont(width >= 650 ? 16 : 13), marginRight: 7 }]}>N°{String(previousAndNextPokemons[0]?.id).padStart(4, '0')}</Text>
+                        {previousAndNextPokemons[0] &&
+                            <Text
+                                style={[styles.navTextId, { fontSize: scaleFont(width >= 650 ? 16 : 13), marginLeft: 7 }]}
+                            >
+                                N°{String(previousAndNextPokemons[0]?.id).padStart(4, '0')}
+                            </Text>}
                         {showPokemonName && <Text style={styles.navText}>{formatPokemonName(previousAndNextPokemons[0]?.name)}</Text>}
                     </View>
                 </Pressable>
@@ -44,7 +49,12 @@ const PokemonDetailsHeader = ({ pokemonName, pokemonId, isFavorite, onToggleFavo
                 >
                     <View style={{ flexDirection: 'row', gap: 10 }}>
                         {showPokemonName && <Text style={styles.navText}>{formatPokemonName(previousAndNextPokemons[1]?.name)}</Text>}
-                        <Text style={[styles.navTextId, { fontSize: scaleFont(width >= 650 ? 16 : 13), marginLeft: 7 }]}>N°{String(previousAndNextPokemons[1]?.id).padStart(4, '0')}</Text>
+                        {previousAndNextPokemons[1] &&
+                            <Text
+                                style={[styles.navTextId, { fontSize: scaleFont(width >= 650 ? 16 : 13), marginLeft: 7 }]}
+                            >
+                                N°{String(previousAndNextPokemons[1]?.id).padStart(4, '0')}
+                            </Text>}
                     </View>
                     <Ionicons
                         name="arrow-forward"
