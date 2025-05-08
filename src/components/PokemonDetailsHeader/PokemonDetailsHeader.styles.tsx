@@ -9,29 +9,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         width: '100%'
     },
-    navButton: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: "row",
-        paddingHorizontal: 20,
-        borderRadius: 8,
-        backgroundColor: "#eee",
-        flex: 1,
-        marginHorizontal: 3,
-        paddingVertical: 10
-    },
-    navText: {
-        fontFamily: 'RobotoRegular',
-        fontSize: scaleFont(16),
-        color: '#7c7c7c',
-    },
-    navTextId: {
-        fontFamily: 'RobotoBold',
-        fontSize: scaleFont(16),
-        flexWrap: 'wrap',
-        flexShrink: 1,
-    },
     pokemonNameAndId: {
         display: 'flex',
         justifyContent: 'space-between',

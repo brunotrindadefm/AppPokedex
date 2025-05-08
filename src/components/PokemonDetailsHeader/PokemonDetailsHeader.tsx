@@ -5,7 +5,7 @@ import styles from "./PokemonDetailsHeader.styles";
 import { IPokemonDetailsHeaderProps } from "@/src/interfaces/IPokemonDetails/IPokemonDetailsHeaderProps";
 import { usePreviousAndNextPokemons } from "@/src/hooks/usePreviousAndNextPokemon";
 import { useRouter } from "expo-router";
-import { scaleFont } from "@/src/utils/scaleFont";
+import PokemonNavigation from "../PokemonNavigation/PokemonNavigation";
 
 const PokemonDetailsHeader = ({ pokemonName, pokemonId, isFavorite, onToggleFavorite }: IPokemonDetailsHeaderProps) => {
 
@@ -15,53 +15,25 @@ const PokemonDetailsHeader = ({ pokemonName, pokemonId, isFavorite, onToggleFavo
     const { width } = useWindowDimensions();
     const showPokemonName = width >= 650;
 
+    if (previousAndNextPokemons.length === 0) return;
+
     return (
         <>
             <View style={styles.navigationButtons}>
-                <Pressable
-                    style={styles.navButton}
-                    onPress={() => {
-                        if (previousAndNextPokemons[0])
-                            router.push(`/app-screens/pokemon-details/${previousAndNextPokemons[0].id}`);
-                    }}
-                >
-                    <Ionicons
-                        name="arrow-back"
-                        size={scaleFont(width >= 650 ? 40 : 20)}
-                        color="#000"
-                    />
-                    <View style={{ flexDirection: 'row', gap: 10 }}>
-                        {previousAndNextPokemons[0] &&
-                            <Text
-                                style={[styles.navTextId, { fontSize: scaleFont(width >= 650 ? 16 : 13), marginLeft: 7 }]}
-                            >
-                                N°{String(previousAndNextPokemons[0]?.id).padStart(4, '0')}
-                            </Text>}
-                        {showPokemonName && <Text style={styles.navText}>{formatPokemonName(previousAndNextPokemons[0]?.name)}</Text>}
-                    </View>
-                </Pressable>
-                <Pressable
-                    style={styles.navButton}
-                    onPress={() => {
-                        if (previousAndNextPokemons[1])
-                            router.push(`/app-screens/pokemon-details/${previousAndNextPokemons[1].id}`);
-                    }}
-                >
-                    <View style={{ flexDirection: 'row', gap: 10 }}>
-                        {showPokemonName && <Text style={styles.navText}>{formatPokemonName(previousAndNextPokemons[1]?.name)}</Text>}
-                        {previousAndNextPokemons[1] &&
-                            <Text
-                                style={[styles.navTextId, { fontSize: scaleFont(width >= 650 ? 16 : 13), marginLeft: 7 }]}
-                            >
-                                N°{String(previousAndNextPokemons[1]?.id).padStart(4, '0')}
-                            </Text>}
-                    </View>
-                    <Ionicons
-                        name="arrow-forward"
-                        size={scaleFont(width >= 650 ? 40 : 20)}
-                        color="#000"
-                    />
-                </Pressable>
+                <PokemonNavigation
+                    pokemon={previousAndNextPokemons[0]}
+                    direction="previous"
+                    onPress={() => router.push(`/app-screens/pokemon-details/${previousAndNextPokemons[0].id}`)}
+                    showPokemonName={showPokemonName}
+                    width={width}
+                />
+                <PokemonNavigation
+                    pokemon={previousAndNextPokemons[1]}
+                    direction="next"
+                    onPress={() => router.push(`/app-screens/pokemon-details/${previousAndNextPokemons[1].id}`)}
+                    showPokemonName={showPokemonName}
+                    width={width}
+                />
             </View>
             <View style={styles.pokemonNameAndId}>
                 <Pressable
