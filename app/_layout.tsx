@@ -29,7 +29,7 @@ export default function RootLayout() {
     if (!appIsReady) return <SplashScreenComponent />;
     return (
         <View
-            style={{ flex: 1, backgroundColor: '#fff', paddingBottom: 80 }}
+            style={{ flex: 1, backgroundColor: '#fff', paddingBottom: 60 }}
             onStartShouldSetResponder={() => {
                 Keyboard.dismiss();
                 return false;

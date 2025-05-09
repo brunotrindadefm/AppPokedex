@@ -38,6 +38,11 @@ const Navbar = () => {
             style={styles.navbarInput}
             placeholderTextColor="#999"
             onSubmitEditing={handleSearch}
+            underlineColorAndroid="transparent"
+            selectionColor="#ff8c00"
+            cursorColor="#ff8c00" // Cor do cursor
+            focusable={false} // Remove o efeito de foco padrão do Android
+            importantForAutofill="no"
           />
           <TouchableOpacity
             onPress={handleSearch} style={styles.searchButton} activeOpacity={0.7}

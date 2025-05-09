@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         zIndex: 10,
       },
       button: {
+        flex: 1,
         alignItems: "center",
         justifyContent: "center",
       },

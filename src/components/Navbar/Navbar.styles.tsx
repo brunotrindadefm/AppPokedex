@@ -2,39 +2,47 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     navbarContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        backgroundColor: '#ff8c00',
-        padding: 4,
+        width: "100%",
+        backgroundColor: "#ff8c00",
+        paddingHorizontal: 16,
+        paddingVertical: 10,
+        gap: 8,
+    },
+    navbarTitle: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "#fff",
+        fontFamily: "OrbitronSemibold",
+        textAlign: "center",
     },
     navbarSearch: {
-        flexDirection: 'row',
-        alignItems: 'center'
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "#fff",
+        borderRadius: 12,
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 4
     },
     navbarInput: {
         flex: 1,
-        borderRadius: 8,
-        backgroundColor: '#dddddd',
-        padding: 10,
-        color: '#000'
+        fontSize: 16,
+        color: "#333",
+        paddingVertical: 6,
+        paddingHorizontal: 8,
     },
     searchButton: {
-        backgroundColor: '#000000',
-        borderRadius: 13,
-        padding: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginLeft: 5
+        backgroundColor: "#000",
+        borderRadius: 8,
+        padding: 8,
+        marginLeft: 6,
+        justifyContent: "center",
+        alignItems: "center",
     },
-    navbarTitle: {
-        fontSize: 22,
-        fontFamily: 'OrbitronSemibold',
-        color: '#ffffff',
-        fontWeight: 'bold',
-        marginBottom: 3
-    }
 })
 
 export default styles
