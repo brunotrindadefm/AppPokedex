@@ -15,7 +15,8 @@ export const usePokemonList = () => {
             isFetching.current = true;
             setLoadingMore(true);
 
-            const newPokemons = await getPokemons(offset, 20);
+            const existingIds = new Set(pokemons.map(p => p.id));
+            const newPokemons = await getPokemons(offset, 20, existingIds);
             if (newPokemons.length === 0) {
                 setHasMore(false);
                 return;

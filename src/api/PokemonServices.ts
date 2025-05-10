@@ -4,25 +4,19 @@ import axiosInstance from "./axiosInstance";
 import { IPokemon } from "@/src/interfaces/IPokemon";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const getPokemons = async (offset: number = 0, limit: number = 20): Promise<IPokemon[]> => {
+export const getPokemons = async (offset: number = 0, limit: number = 20, existingIds: Set<number> = new Set()): Promise<IPokemon[]> => {
     const response = await axiosInstance.get(`pokemon?limit=${limit}&offset=${offset}`);
-    const pokemons = response.data.results;
+    const pokemons: IPokemon[] = response.data.results;
 
-    const promises = pokemons.map(async (pokemon: IPokemon) => {
-        try {
-            const res = await axiosInstance.get(pokemon.url);
-            const img = res.data?.sprites?.other?.['official-artwork']?.front_default;
+    const pokemonDetailsPromises = pokemons.map((pokemon) =>
+        axiosInstance.get(pokemon.url)
+    );
+    const detailsResponses = await Promise.all(pokemonDetailsPromises);
+    const pokemonDetails = detailsResponses.map((res) => res.data);
 
-            if (img) return res.data;
-        } catch (err) {
-            console.log(`Error searching: ${pokemon.name}`, err);
-            return null
-        }
-    })
+    const newPokemons = pokemonDetails.filter(pokemon => !existingIds.has(pokemon.id));
 
-    const results = await Promise.all(promises);
-
-    return results.filter(Boolean) as IPokemon[];
+    return newPokemons;
 };
 
 export const getPokemonById = async (pokemonId: string): Promise<IPokemon | null> => {
