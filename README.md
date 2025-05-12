@@ -1,50 +1,80 @@
-# Welcome to your Expo app 👋
+# 📱 Pokedex App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Uma Pokédex feita com **React Native**, utilizando a **PokéAPI** para exibir informações detalhadas de diversos Pokémons.
 
-## Get started
+## ✨ Funcionalidades
 
-1. Install dependencies
+- Listagem de Pokémons com scroll infinito
+- Busca por nome ou número
+- Exibição de detalhes:
+  - Tipos e fraquezas
+  - Descrição
+  - Evoluções
+- Armazenamento local com cache para melhorar a performance
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🧪 Tecnologias usadas
 
-   ```bash
-    npx expo start
-   ```
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Axios](https://axios-http.com/)
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/)
+- [PokéAPI](https://pokeapi.co/)
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🚀 Como rodar o projeto
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Pré-requisitos
 
-## Get a fresh project
-
-When you're ready, run:
-
+- Node.js instalado
+- Git instalado
+- Expo CLI instalado globalmente:
 ```bash
-npm run reset-project
-```
+npm install -g expo-cli
+Passo a passo
+Clone o repositório:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+bash
+Copiar
+Editar
+git clone https://github.com/seu-usuario/nome-do-repo.git
+Acesse a pasta do projeto:
 
-## Learn more
+bash
+Copiar
+Editar
+cd nome-do-repo
+Instale as dependências:
 
-To learn more about developing your project with Expo, look at the following resources:
+bash
+Copiar
+Editar
+npm install
+Inicie o projeto com Expo:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+bash
+Copiar
+Editar
+npm start
+Ou:
 
-## Join the community
+bash
+Copiar
+Editar
+expo start
+Escaneie o QR code com o aplicativo Expo Go no seu celular (Android ou iOS).
 
-Join our community of developers creating universal apps.
+Autor
+Feito Bruno Trindade
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+yaml
+Copiar
+Editar
+
+Licença
+Este projeto está sob a licença MIT.
+
+---
