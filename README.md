@@ -1,5 +1,10 @@
 # Pokedex App
 
+![Node.js](https://img.shields.io/badge/node-%3E=18.0.0-green)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Expo](https://img.shields.io/badge/Expo-local%20install-blue)
+![Made by Bruno Trindade](https://img.shields.io/badge/Made%20by-Bruno%20Trindade-ff69b4)
+
 Uma Pokédex feita com **React Native**, utilizando a **PokéAPI** para exibir informações detalhadas de diversos Pokémons.
 
 ## Funcionalidades
@@ -31,11 +36,9 @@ Uma Pokédex feita com **React Native**, utilizando a **PokéAPI** para exibir i
 
 - Node.js instalado
 - Git instalado
-- Expo CLI instalado globalmente:
-```bash
-npm install -g expo-cli
-```
-Passo a passo
+- Expo CLI instalado.
+
+### Passo a passo
 Clone o repositório:
 
 ```bash
