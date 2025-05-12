@@ -9,6 +9,7 @@ import { formatPokemonName } from "@/src/utils/formatPokemonName";
 const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
 
     const router = useRouter();
+
     return (
         <TouchableOpacity activeOpacity={0.7} style={styles.pokemonCard}>
             <Pressable

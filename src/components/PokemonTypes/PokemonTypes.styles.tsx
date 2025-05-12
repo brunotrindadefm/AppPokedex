@@ -27,8 +27,8 @@
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: 20,
-            width: 20,
+            height: 16,
+            width: 16,
             backgroundColor: 'black',
             borderRadius: '50%',
             marginLeft: 5
