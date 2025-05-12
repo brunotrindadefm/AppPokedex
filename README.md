@@ -34,37 +34,44 @@ Uma Pokédex feita com **React Native**, utilizando a **PokéAPI** para exibir i
 - Expo CLI instalado globalmente:
 ```bash
 npm install -g expo-cli
+```
 Passo a passo
 Clone o repositório:
 
-bash
+```bash
 Copiar
 Editar
 git clone https://github.com/seu-usuario/nome-do-repo.git
+```
 Acesse a pasta do projeto:
 
-bash
+```bash
 Copiar
 Editar
 cd nome-do-repo
+```
 Instale as dependências:
 
-bash
+```bash
 Copiar
 Editar
 npm install
+```
 Inicie o projeto com Expo:
 
-bash
+```bash
 Copiar
 Editar
 npm start
+```
 Ou:
 
-bash
+```bash
 Copiar
 Editar
 expo start
+```
+
 Escaneie o QR code com o aplicativo Expo Go no seu celular (Android ou iOS).
 
 Autor
