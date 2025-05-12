@@ -1,8 +1,8 @@
-# 📱 Pokedex App
+# Pokedex App
 
 Uma Pokédex feita com **React Native**, utilizando a **PokéAPI** para exibir informações detalhadas de diversos Pokémons.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 - Listagem de Pokémons com scroll infinito
 - Busca por nome ou número
@@ -14,7 +14,7 @@ Uma Pokédex feita com **React Native**, utilizando a **PokéAPI** para exibir i
 
 ---
 
-## 🧪 Tecnologias usadas
+## Tecnologias usadas
 
 - [React Native](https://reactnative.dev/)
 - [Expo](https://expo.dev/)
@@ -25,7 +25,7 @@ Uma Pokédex feita com **React Native**, utilizando a **PokéAPI** para exibir i
 
 ---
 
-## 🚀 Como rodar o projeto
+## Como rodar o projeto
 
 ### Pré-requisitos
 
@@ -39,49 +39,36 @@ Passo a passo
 Clone o repositório:
 
 ```bash
-Copiar
-Editar
 git clone https://github.com/seu-usuario/nome-do-repo.git
 ```
 Acesse a pasta do projeto:
 
 ```bash
-Copiar
-Editar
 cd nome-do-repo
 ```
 Instale as dependências:
 
 ```bash
-Copiar
-Editar
 npm install
 ```
 Inicie o projeto com Expo:
 
 ```bash
-Copiar
-Editar
 npm start
 ```
 Ou:
 
 ```bash
-Copiar
-Editar
 expo start
 ```
 
 Escaneie o QR code com o aplicativo Expo Go no seu celular (Android ou iOS).
 
-Autor
+## Autor
 Feito Bruno Trindade
 
-yaml
-Copiar
-Editar
 
-Licença
+## Licença
 Este projeto está sob a licença MIT.
 
 ---
